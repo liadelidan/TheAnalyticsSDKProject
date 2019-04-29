@@ -10,6 +10,10 @@
 		5FCE61F02276071300141AD2 /* AnalyticsSDKProject.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FCE61EE2276071300141AD2 /* AnalyticsSDKProject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5FCE61FD22760FF400141AD2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5FCE61FB22760FF400141AD2 /* Model.xcdatamodeld */; };
 		5FCE61FF22761BD100141AD2 /* EventReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCE61FE22761BD100141AD2 /* EventReporter.swift */; };
+		5FCE620122763DEA00141AD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCE620022763DEA00141AD2 /* AppDelegate.swift */; };
+		5FCE622E2276514100141AD2 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCE622D2276514100141AD2 /* Event+CoreDataProperties.swift */; };
+		5FCE62302276516500141AD2 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCE622F2276516500141AD2 /* Event+CoreDataClass.swift */; };
+		5FCE62322276F4B900141AD2 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCE62312276F4B900141AD2 /* PersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +22,10 @@
 		5FCE61EF2276071300141AD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FCE61FC22760FF400141AD2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		5FCE61FE22761BD100141AD2 /* EventReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventReporter.swift; sourceTree = "<group>"; };
+		5FCE620022763DEA00141AD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5FCE622D2276514100141AD2 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataProperties.swift"; path = "../Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5FCE622F2276516500141AD2 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataClass.swift"; path = "../Event+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5FCE62312276F4B900141AD2 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,10 +58,14 @@
 		5FCE61ED2276071300141AD2 /* AnalyticsSDKProject */ = {
 			isa = PBXGroup;
 			children = (
+				5FCE620022763DEA00141AD2 /* AppDelegate.swift */,
+				5FCE61FE22761BD100141AD2 /* EventReporter.swift */,
+				5FCE62312276F4B900141AD2 /* PersistenceManager.swift */,
+				5FCE622F2276516500141AD2 /* Event+CoreDataClass.swift */,
+				5FCE622D2276514100141AD2 /* Event+CoreDataProperties.swift */,
+				5FCE61FB22760FF400141AD2 /* Model.xcdatamodeld */,
 				5FCE61EE2276071300141AD2 /* AnalyticsSDKProject.h */,
 				5FCE61EF2276071300141AD2 /* Info.plist */,
-				5FCE61FB22760FF400141AD2 /* Model.xcdatamodeld */,
-				5FCE61FE22761BD100141AD2 /* EventReporter.swift */,
 			);
 			path = AnalyticsSDKProject;
 			sourceTree = "<group>";
@@ -137,7 +149,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FCE620122763DEA00141AD2 /* AppDelegate.swift in Sources */,
 				5FCE61FD22760FF400141AD2 /* Model.xcdatamodeld in Sources */,
+				5FCE62302276516500141AD2 /* Event+CoreDataClass.swift in Sources */,
+				5FCE62322276F4B900141AD2 /* PersistenceManager.swift in Sources */,
+				5FCE622E2276514100141AD2 /* Event+CoreDataProperties.swift in Sources */,
 				5FCE61FF22761BD100141AD2 /* EventReporter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
