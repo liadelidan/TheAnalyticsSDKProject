@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		5FCE61F02276071300141AD2 /* AnalyticsSDKProject.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FCE61EE2276071300141AD2 /* AnalyticsSDKProject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5FCE61FD22760FF400141AD2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5FCE61FB22760FF400141AD2 /* Model.xcdatamodeld */; };
+		5FCE61FF22761BD100141AD2 /* EventReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCE61FE22761BD100141AD2 /* EventReporter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5FCE61EB2276071300141AD2 /* AnalyticsSDKProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnalyticsSDKProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FCE61EE2276071300141AD2 /* AnalyticsSDKProject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnalyticsSDKProject.h; sourceTree = "<group>"; };
 		5FCE61EF2276071300141AD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FCE61FC22760FF400141AD2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		5FCE61FE22761BD100141AD2 /* EventReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventReporter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +52,8 @@
 			children = (
 				5FCE61EE2276071300141AD2 /* AnalyticsSDKProject.h */,
 				5FCE61EF2276071300141AD2 /* Info.plist */,
+				5FCE61FB22760FF400141AD2 /* Model.xcdatamodeld */,
+				5FCE61FE22761BD100141AD2 /* EventReporter.swift */,
 			);
 			path = AnalyticsSDKProject;
 			sourceTree = "<group>";
@@ -95,6 +101,7 @@
 				TargetAttributes = {
 					5FCE61EA2276071300141AD2 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -130,6 +137,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FCE61FD22760FF400141AD2 /* Model.xcdatamodeld in Sources */,
+				5FCE61FF22761BD100141AD2 /* EventReporter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +270,7 @@
 		5FCE61F42276071300141AD2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -278,6 +288,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Optimove.AnalyticsSDKProject;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -286,6 +297,7 @@
 		5FCE61F52276071300141AD2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -330,6 +342,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5FCE61FB22760FF400141AD2 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5FCE61FC22760FF400141AD2 /* Model.xcdatamodel */,
+			);
+			currentVersion = 5FCE61FC22760FF400141AD2 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5FCE61E22276071300141AD2 /* Project object */;
 }
