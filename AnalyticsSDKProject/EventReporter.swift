@@ -10,30 +10,15 @@ import UIKit
 import CoreData
 
 public class EventReporter: UIViewController {
-
+    
     // The event queue.
     public var eventQueue = [[String: Any]]()
-    
-    // Core Data variables.
-    let persistenceManager: PersistenceManager
-    
-
-    private init (persistenceManager: PersistenceManager)
-    {
-        self.persistenceManager = persistenceManager
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     
     override public func viewDidLoad() {
         super.viewDidLoad()
         
         // Getting all the events from the Core Data.
-        guard let events = try! persistenceManager.context.fetch(Event.fetchRequest()) as? [Event] else { return }
+        var events = CoreDateManager.shared.fetch()
         
         // Adding each event received from Core Data to the eventQueue.
         for specEvent in events
@@ -44,7 +29,7 @@ public class EventReporter: UIViewController {
                 "timestamp": specEvent.timestamp
                 ])
         }
-
+        
     }
     
     // Helper function to check that the Event Queue works correctly.
@@ -70,11 +55,7 @@ public class EventReporter: UIViewController {
             ])
         
         // Adding an event to the Core Data.
-        let event = Event(context: persistenceManager.context)
-        event.name = name
-        event.param = param
-        event.timestamp = timeStamp
-        persistenceManager.save()
+        CoreDateManager.shared.createEvent(name: name, param: param ?? "")
         
         // Checking if the eventQueue filled up with 5 requests.
         if (eventQueue.count == 5)
@@ -95,8 +76,7 @@ public class EventReporter: UIViewController {
             eventQueue.removeAll()
             
             // Deleteing all the Core Data data because we need it clean as well.
-            persistenceManager.deleteData()
-            persistenceManager.save()
+            CoreDateManager.shared.deleteData()
             
             // Creating the BODY part of the HTTP request.
             request.httpBody = jsonData
@@ -123,6 +103,6 @@ public class EventReporter: UIViewController {
             task.resume()
         }
     }
-
-
+    
+    
 }
