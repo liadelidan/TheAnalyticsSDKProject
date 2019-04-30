@@ -38,10 +38,10 @@ public class CoreDateManager {
         
         do {
             try context.save()
-            print("✅ Person saved succesfuly")
+            print("✅ Event saved succesfuly")
             
         } catch let error {
-            print("❌ Failed to create Person: \(error.localizedDescription)")
+            print("❌ Failed to create an Event: \(error.localizedDescription)")
         }
     }
     
@@ -70,10 +70,10 @@ public class CoreDateManager {
             
             do {
                 try context.save()
-                print("✅ Person saved succesfuly")
+                print("✅ Deleted all data succesfuly")
                 
             } catch let error {
-                print("❌ Failed to create Person: \(error.localizedDescription)")
+                print("❌ Failed to delete data: \(error.localizedDescription)")
             }
         } catch let error as NSError {
             print("Deleted all my data in myEntity error : \(error) \(error.userInfo)")
