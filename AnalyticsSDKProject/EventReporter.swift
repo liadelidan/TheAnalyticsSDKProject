@@ -15,7 +15,7 @@ public class EventReporter: UIViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         // Getting all the events from the Core Data.
-
+        sendEvent(name: "YOLO")
     }
     
     // SendEvent function as requested.
@@ -25,7 +25,14 @@ public class EventReporter: UIViewController {
     {
 
         // Adding an event to the Core Data.
-        CoreDateManager.shared.createEvent(name: name, param: param ?? "")
+        if (param == nil)
+        {
+            CoreDateManager.shared.createEvent(name: name)
+        }
+        else
+        {
+            CoreDateManager.shared.createEvent(name: name, param: param)
+        }
         
         let events = CoreDateManager.shared.fetch()
         print("The amount of Entities in Core Data is " + String(CoreDateManager.shared.fetch().count))
@@ -33,6 +40,12 @@ public class EventReporter: UIViewController {
         // Checking if the eventQueue filled up with 5 requests.
         if (CoreDateManager.shared.fetch().count >= 5)
         {
+            
+            for event in events
+            {
+                print(event)
+            }
+            
             // Creating POST HTTP request data
             let url = URL(string: "https:://demo.url")!
             var request = URLRequest(url: url)

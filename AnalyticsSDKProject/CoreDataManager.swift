@@ -27,13 +27,16 @@ public class CoreDateManager {
         return container
     }()
     
-    public func createEvent(name: String, param: String){
+    public func createEvent(name: String, param: String? = nil){
         
         let context = persistentContainer.viewContext
         let specEvent = NSEntityDescription.insertNewObject(forEntityName: "Event", into: context) as! Event
         
         specEvent.name = name
-        specEvent.param  = param
+        if (param != nil)
+        {
+            specEvent.param  = param
+        }
         specEvent.timestamp = Date().timeIntervalSince1970
         
         do {
