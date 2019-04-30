@@ -12,31 +12,10 @@ import CoreData
 public class EventReporter: UIViewController {
     
     // The event queue.
-    public var eventQueue = [[String: Any]]()
     override public func viewDidLoad() {
         super.viewDidLoad()
-        
         // Getting all the events from the Core Data.
-        let events = CoreDateManager.shared.fetch()
-        
-        // Adding each event received from Core Data to the eventQueue.
-        for specEvent in events
-        {
-            eventQueue.append([
-                "name": specEvent.name,
-                "param": specEvent.param ?? "",
-                "timestamp": specEvent.timestamp
-                ])
-        }
-    }
-    
-    // Helper function to check that the Event Queue works correctly.
-    public func printEventQueue()
-    {
-        for event in eventQueue
-        {
-            print(event)
-        }
+
     }
     
     // SendEvent function as requested.
@@ -44,20 +23,15 @@ public class EventReporter: UIViewController {
     // while maintaining the Core Data data.
     public func sendEvent(name: String,  param: String? = nil)
     {
-        let timeStamp = Date().timeIntervalSince1970
-        // Adding an event to the eventQueue.
-        eventQueue.append([
-            "name": name,
-            "param": param ?? "",
-            "timestamp": timeStamp
-            ])
-        
+
         // Adding an event to the Core Data.
         CoreDateManager.shared.createEvent(name: name, param: param ?? "")
+        
+        let events = CoreDateManager.shared.fetch()
         print("The amount of Entities in Core Data is " + String(CoreDateManager.shared.fetch().count))
         
         // Checking if the eventQueue filled up with 5 requests.
-        if (eventQueue.count == 5)
+        if (CoreDateManager.shared.fetch().count >= 5)
         {
             // Creating POST HTTP request data
             let url = URL(string: "https:://demo.url")!
@@ -67,15 +41,12 @@ public class EventReporter: UIViewController {
             
             // Converting the eventQueue to jsonData that can be sent as the POST
             // request body.
-            let jsonData = try? JSONSerialization.data(withJSONObject: eventQueue)
-            
-            // Making sure the eventQueue is empty after converting all the events to
-            // json data.
-            eventQueue.removeAll()
-            
+            let jsonData = try! JSONEncoder().encode(events)
+
             // Deleteing all the Core Data data because we need it clean as well.
             CoreDateManager.shared.deleteData()
-            print("The amount of Entities in Core Data is " + String(CoreDateManager.shared.fetch().count))
+            print("The amount of Entities in Core Data after deleting " + String(CoreDateManager.shared.fetch().count))
+            
             // Creating the BODY part of the HTTP request.
             request.httpBody = jsonData
             
@@ -101,6 +72,5 @@ public class EventReporter: UIViewController {
             task.resume()
         }
     }
-    
     
 }

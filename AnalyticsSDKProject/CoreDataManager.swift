@@ -55,7 +55,6 @@ public class CoreDateManager {
     }
  
     public func deleteData() {
-        
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Event")
         fetchRequest.returnsObjectsAsFaults = false
         let context = persistentContainer.viewContext
