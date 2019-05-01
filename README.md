@@ -44,5 +44,14 @@ Instructions:
       be sent to, that URL needed to be changed in the SDK code.
       The URL currently is as requested in the exercise.
       
+   7. Console prints explained:
+      I created some console prints that will help to understand what is going
+      on in the background and what is being saved on the CoreData at every moment.
+      When you add an event, there is a message printed if the event is saved successfully, and 
+      a message the shows how many events(entities) exists in the CoreData.
+      When the CoreData events reach 5, the data is being deleted. The is a message printed if
+      the deleted successfully and a message the verify this by counting the amount of entities
+      exist after deletion.
+      
 Thank you for testing my app, hope you have enjoyed it. :-)
 Liad Elidan
