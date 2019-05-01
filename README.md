@@ -52,6 +52,10 @@ Instructions:
       When the CoreData events reach 5, the data is being deleted. The is a message printed if
       the deleted successfully and a message the verify this by counting the amount of entities
       exist after deletion.
+      Provided example of the prints with a seperate projects the works great with the SDK:
       
+      <img width="743" alt="Screen Shot 2019-05-01 at 19 29 13" src="https://user-images.githubusercontent.com/19635719/57028330-7a30b100-6c47-11e9-9f1f-3365da83a15b.png">
+
+
 Thank you for testing my app, hope you have enjoyed it. :-)
 Liad Elidan
