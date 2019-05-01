@@ -16,19 +16,27 @@ Instructions:
    
    3. 
       Every time you want to add an Event, send the event
-      with the appropriate date like so:
+      with the appropriate data use this:
+      
       myEventReporter.sendEvent(name: "EXAMPLE_NAME", param: "EXAMPLE_PARAM")
+      
       or without param:
+      
       myEventReporter.sendEvent(name: "EXAMPLE_NAME")
       
    4. The app will send the events when there are 5 events, the events will
       be saved even if you close the app.
       
    5. The BODY of the HTML that will be sent for each event will be as follows:
+   
       {
+      
         name: EXAMPLE_NAME,
+        
         param: EXAMPLE_PARAM, // or null if there was no param provided.
+        
         timestamp: TIME // time when received the event.
+        
       }
       
    6. The app have been tested with a local server created and works perfect.
