@@ -1,15 +1,24 @@
+//
+//  CoreDataManager.swift
+//  AnalyticsSDKProject
+//
+//  Created by Liad Elidan on 28/04/2019.
+//  Copyright © 2019 All rights reserved.
+//
 
 import Foundation
 import CoreData
 
+// CoreDataManager that deals with managing the CoreData.
 public class CoreDateManager {
     
+    // Creating the shared static variable to be used.
     public static let shared = CoreDateManager()
     
     let identifier: String  = "Optimove.AnalyticsSDKProject"
     let model: String       = "Model"
     
-    
+    // PersistentContainer creation.
     lazy var persistentContainer: NSPersistentContainer = {
         
         let messageKitBundle = Bundle(identifier: self.identifier)
@@ -27,18 +36,25 @@ public class CoreDateManager {
         return container
     }()
     
-    public func createEvent(name: String, param: String? = nil){
-        
+    // Adding the Event to the CoreData.
+    public func createEvent(name: String, param: String? = nil)
+    {
+        // creating the context with our persistent container.
         let context = persistentContainer.viewContext
+        // Choosing a specific Entity -> Event to be inserted to.
         let specEvent = NSEntityDescription.insertNewObject(forEntityName: "Event", into: context) as! Event
         
+        // Filling up the appropriate parts of the event, name, param if exist and
+        // timestamp.
         specEvent.name = name
+        // Checking if we used the optional param or not.
         if (param != nil)
         {
             specEvent.param  = param
         }
         specEvent.timestamp = Date().timeIntervalSince1970
         
+        // Saving the CoreData context.
         do {
             try context.save()
             print("✅ Event saved succesfuly")
@@ -48,16 +64,19 @@ public class CoreDateManager {
         }
     }
     
-    public func fetch() -> [Event]{
-        
+    // Function to fetch the data and return it as an array of Events.
+    public func fetch() -> [Event]
+    {
         let context = persistentContainer.viewContext
-        
         let events = try? context.fetch(Event.fetchRequest()) as? [Event]
 
         return events!
     }
- 
-    public func deleteData() {
+    
+    // Function to delete all the data in the CoreData, used to reset the
+    // queue of data after it is filled with 5 events.
+    public func deleteData()
+    {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Event")
         fetchRequest.returnsObjectsAsFaults = false
         let context = persistentContainer.viewContext

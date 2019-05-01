@@ -2,10 +2,9 @@
 //  AnalyticsSDKProject.h
 //  AnalyticsSDKProject
 //
-//  Created by Admin on 28/04/2019.
-//  Copyright © 2019 Devnostics. All rights reserved.
+//  Created by Liad Elidan on 28/04/2019.
+//  Copyright © 2019 All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
 
 //! Project version number for AnalyticsSDKProject.

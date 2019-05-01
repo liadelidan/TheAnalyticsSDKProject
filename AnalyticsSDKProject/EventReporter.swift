@@ -2,29 +2,26 @@
 //  EventReporter.swift
 //  AnalyticsSDKProject
 //
-//  Created by Admin on 28/04/2019.
-//  Copyright © 2019 Devnostics. All rights reserved.
+//  Created by Liad Elidan on 28/04/2019.
+//  Copyright © 2019 All rights reserved.
 //
 
 import UIKit
 import CoreData
 
+// EventReporter class as requested.
 public class EventReporter: UIViewController {
     
-    // The event queue.
-    override public func viewDidLoad() {
+    override public func viewDidLoad()
+    {
         super.viewDidLoad()
-        // Getting all the events from the Core Data.
-        sendEvent(name: "YOLO")
     }
     
     // SendEvent function as requested.
-    // Sending the events in eventQueue only when there are 5 events,
-    // while maintaining the Core Data data.
     public func sendEvent(name: String,  param: String? = nil)
     {
-
-        // Adding an event to the Core Data.
+        // Adding an event to the Core Data, checking if the
+        // optional param exists or not.
         if (param == nil)
         {
             CoreDateManager.shared.createEvent(name: name)
@@ -34,17 +31,13 @@ public class EventReporter: UIViewController {
             CoreDateManager.shared.createEvent(name: name, param: param)
         }
         
+        // Fetching all the events that exist in the queue from the CoreData.
         let events = CoreDateManager.shared.fetch()
         print("The amount of Entities in Core Data is " + String(CoreDateManager.shared.fetch().count))
         
-        // Checking if the eventQueue filled up with 5 requests.
+        // Checking if the amount of the events in the queue filled up with 5 requests.
         if (CoreDateManager.shared.fetch().count >= 5)
         {
-            
-            for event in events
-            {
-                print(event)
-            }
             
             // Creating POST HTTP request data
             let url = URL(string: "https:://demo.url")!
@@ -52,15 +45,15 @@ public class EventReporter: UIViewController {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpMethod = "POST"
             
-            // Converting the eventQueue to jsonData that can be sent as the POST
-            // request body.
+            // Converting the events to JSON data.
             let jsonData = try! JSONEncoder().encode(events)
 
-            // Deleteing all the Core Data data because we need it clean as well.
+            // Deleteing all the events from the queue in the CoreData,
+            // because we are sending them.
             CoreDateManager.shared.deleteData()
             print("The amount of Entities in Core Data after deleting " + String(CoreDateManager.shared.fetch().count))
             
-            // Creating the BODY part of the HTTP request.
+            // Creating the BODY part of the HTTP request using the JSON data.
             request.httpBody = jsonData
             
             // Sending the HTTP POST request.

@@ -2,18 +2,18 @@
 //  Event+CoreDataProperties.swift
 //  AnalyticsSDKProject
 //
-//  Created by Admin on 29/04/2019.
-//  Copyright © 2019 Devnostics. All rights reserved.
-//
+//  Created by Liad Elidan on 28/04/2019.
+//  Copyright © 2019 All rights reserved.
 //
 
 import Foundation
 import CoreData
 
-
+// Event extension to be used within the CoreData as Entity.
 extension Event : Encodable{
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Event> {
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Event>
+    {
         return NSFetchRequest<Event>(entityName: "Event")
     }
 
