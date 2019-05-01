@@ -10,7 +10,7 @@ Instructions:
 3. Use the SDK as follows:
    In the swift file you to use the SDK add the following lines:
    
-   1. import TheAnalyticsSDKProject
+   1. import AnalyticsSDKProject
    
    2. let myEventReporter:EventReporter = EventReporter()
    
